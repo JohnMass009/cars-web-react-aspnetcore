@@ -1,8 +1,8 @@
-## Ïðîåêò Cars
+## ÐŸÑ€Ð¾ÐµÐºÑ‚ Cars
 
-## Îáíîâëåíèå ïðîêñè-êëàññîâ Entity Framework èç áàçû MS Sql
+## ÐžÐ±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¿Ñ€Ð¾ÐºÑÐ¸-ÐºÐ»Ð°ÑÑÐ¾Ð² Entity Framework Ð¸Ð· Ð±Ð°Ð·Ñ‹ MS Sql
 
-Êîìàíäà íèæå óêàçàíà äëÿ Packege Manager Console (VS menu -> Tools -> Nuget Package Manager -> Packege Manager Console)
-Startup ïðîåêòîì äîëæåí áûòü `Cars.CarsDb`
+ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð½Ð¸Ð¶Ðµ ÑƒÐºÐ°Ð·Ð°Ð½Ð° Ð´Ð»Ñ Packege Manager Console (VS menu -> Tools -> Nuget Package Manager -> Packege Manager Console)
+Startup Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð¾Ð¼ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ `Cars.CarsDb`
 
-`Scaffold-DbContext "Server=<àäðåñ ñåðâåðà>;Database=CarsDb;Trusted_Connection=True;TrustServerCertificate=true" Microsoft.EntityFrameworkCore.SqlServer -Context CarsDbContext -ContextDir Context -OutputDir Models`
+`Scaffold-DbContext "Server=<Ð°Ð´Ñ€ÐµÑ ÑÐµÑ€Ð²ÐµÑ€Ð°>;Database=CarsDb;Trusted_Connection=True;TrustServerCertificate=true" Microsoft.EntityFrameworkCore.SqlServer -Context CarsDbContext -ContextDir Context -OutputDir Models`

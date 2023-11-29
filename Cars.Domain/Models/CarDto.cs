@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Cars.Domain.Models
 {
-    internal class CarDto
+    public class CarDto
     {
+        public Guid Id { get; set; }
+
+        public string Name { get; set; } = null!;
+
+        public int? CategoryCarId { get; set; }
     }
 }

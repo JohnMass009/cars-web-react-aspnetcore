@@ -46,7 +46,7 @@ public partial class CarsDbContext : DbContext
     {
         modelBuilder.Entity<Car>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Car__3214EC07BDAEA102");
+            entity.HasKey(e => e.Id).HasName("PK__Car__3214EC072E553CD7");
 
             entity.ToTable("Car");
 
@@ -55,57 +55,57 @@ public partial class CarsDbContext : DbContext
 
             entity.HasOne(d => d.CategoryCar).WithMany(p => p.Cars)
                 .HasForeignKey(d => d.CategoryCarId)
-                .HasConstraintName("FK__Car__CategoryCar__46E78A0C");
+                .HasConstraintName("FK__Car__CategoryCar__33D4B598");
         });
 
         modelBuilder.Entity<CarEngine>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CarEngin__3214EC07AE4D90D2");
+            entity.HasKey(e => e.Id).HasName("PK__CarEngin__3214EC07ED7F2A9C");
 
             entity.ToTable("CarEngine");
 
             entity.HasOne(d => d.Car).WithMany(p => p.CarEngines)
                 .HasForeignKey(d => d.CarId)
-                .HasConstraintName("FK__CarEngine__CarId__49C3F6B7");
+                .HasConstraintName("FK__CarEngine__CarId__36B12243");
 
             entity.HasOne(d => d.Engine).WithMany(p => p.CarEngines)
                 .HasForeignKey(d => d.EngineId)
-                .HasConstraintName("FK__CarEngine__Engin__4AB81AF0");
+                .HasConstraintName("FK__CarEngine__Engin__37A5467C");
         });
 
         modelBuilder.Entity<CarStrongPoint>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CarStron__3214EC0788F20E63");
+            entity.HasKey(e => e.Id).HasName("PK__CarStron__3214EC070712A823");
 
             entity.ToTable("CarStrongPoint");
 
             entity.HasOne(d => d.Car).WithMany(p => p.CarStrongPoints)
                 .HasForeignKey(d => d.CarId)
-                .HasConstraintName("FK__CarStrong__CarId__4D94879B");
+                .HasConstraintName("FK__CarStrong__CarId__3A81B327");
 
             entity.HasOne(d => d.StrongPoint).WithMany(p => p.CarStrongPoints)
                 .HasForeignKey(d => d.StrongPointId)
-                .HasConstraintName("FK__CarStrong__Stron__4E88ABD4");
+                .HasConstraintName("FK__CarStrong__Stron__3B75D760");
         });
 
         modelBuilder.Entity<CarWeakPoint>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CarWeakP__3214EC07006A99D1");
+            entity.HasKey(e => e.Id).HasName("PK__CarWeakP__3214EC075639F99C");
 
             entity.ToTable("CarWeakPoint");
 
             entity.HasOne(d => d.Car).WithMany(p => p.CarWeakPoints)
                 .HasForeignKey(d => d.CarId)
-                .HasConstraintName("FK__CarWeakPo__CarId__5165187F");
+                .HasConstraintName("FK__CarWeakPo__CarId__3E52440B");
 
             entity.HasOne(d => d.WeakPoint).WithMany(p => p.CarWeakPoints)
                 .HasForeignKey(d => d.WeakPointId)
-                .HasConstraintName("FK__CarWeakPo__WeakP__52593CB8");
+                .HasConstraintName("FK__CarWeakPo__WeakP__3F466844");
         });
 
         modelBuilder.Entity<CategoryCar>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Category__3214EC0748DB1F41");
+            entity.HasKey(e => e.Id).HasName("PK__Category__3214EC071F7B1B4C");
 
             entity.ToTable("CategoryCar");
 
@@ -114,7 +114,7 @@ public partial class CarsDbContext : DbContext
 
         modelBuilder.Entity<CategoryEngine>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Category__3214EC07A434EB00");
+            entity.HasKey(e => e.Id).HasName("PK__Category__3214EC0726AFD90E");
 
             entity.ToTable("CategoryEngine");
 
@@ -123,7 +123,7 @@ public partial class CarsDbContext : DbContext
 
         modelBuilder.Entity<Engine>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Engine__3214EC0746DF93EB");
+            entity.HasKey(e => e.Id).HasName("PK__Engine__3214EC0794B3D536");
 
             entity.ToTable("Engine");
 
@@ -132,16 +132,16 @@ public partial class CarsDbContext : DbContext
 
             entity.HasOne(d => d.CategoryEngine).WithMany(p => p.Engines)
                 .HasForeignKey(d => d.CategoryEngineId)
-                .HasConstraintName("FK__Engine__Category__3C69FB99");
+                .HasConstraintName("FK__Engine__Category__29572725");
 
             entity.HasOne(d => d.VolumeEngine).WithMany(p => p.Engines)
                 .HasForeignKey(d => d.VolumeEngineId)
-                .HasConstraintName("FK__Engine__VolumeEn__3D5E1FD2");
+                .HasConstraintName("FK__Engine__VolumeEn__2A4B4B5E");
         });
 
         modelBuilder.Entity<Guide>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Guide__3214EC0716D629AE");
+            entity.HasKey(e => e.Id).HasName("PK__Guide__3214EC076F1976B9");
 
             entity.ToTable("Guide");
 
@@ -151,22 +151,22 @@ public partial class CarsDbContext : DbContext
 
         modelBuilder.Entity<MatchupCar>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__MatchupC__3214EC072D4C9E0E");
+            entity.HasKey(e => e.Id).HasName("PK__MatchupC__3214EC07C598B268");
 
             entity.ToTable("MatchupCar");
 
             entity.HasOne(d => d.Bad).WithMany(p => p.MatchupCarBads)
                 .HasForeignKey(d => d.BadId)
-                .HasConstraintName("FK__MatchupCa__BadId__5629CD9C");
+                .HasConstraintName("FK__MatchupCa__BadId__4316F928");
 
             entity.HasOne(d => d.Good).WithMany(p => p.MatchupCarGoods)
                 .HasForeignKey(d => d.GoodId)
-                .HasConstraintName("FK__MatchupCa__GoodI__5535A963");
+                .HasConstraintName("FK__MatchupCa__GoodI__4222D4EF");
         });
 
         modelBuilder.Entity<StrongPoint>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__StrongPo__3214EC07DD76948D");
+            entity.HasKey(e => e.Id).HasName("PK__StrongPo__3214EC07CA6A606E");
 
             entity.ToTable("StrongPoint");
 
@@ -175,7 +175,7 @@ public partial class CarsDbContext : DbContext
 
         modelBuilder.Entity<Tutorial>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Tutorial__3214EC07744DFA9D");
+            entity.HasKey(e => e.Id).HasName("PK__Tutorial__3214EC07D96229EE");
 
             entity.ToTable("Tutorial");
 
@@ -185,7 +185,7 @@ public partial class CarsDbContext : DbContext
 
         modelBuilder.Entity<VolumeEngine>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__VolumeEn__3214EC07346F7595");
+            entity.HasKey(e => e.Id).HasName("PK__VolumeEn__3214EC07CC8DC544");
 
             entity.ToTable("VolumeEngine");
 
@@ -194,7 +194,7 @@ public partial class CarsDbContext : DbContext
 
         modelBuilder.Entity<WeakPoint>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__WeakPoin__3214EC0754FA2B1E");
+            entity.HasKey(e => e.Id).HasName("PK__WeakPoin__3214EC07F404CBEB");
 
             entity.ToTable("WeakPoint");
 

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Cars.Domain.Models;
 
-namespace Cars.Infrastructure.Interfaces
+namespace Cars.Domain.Interfaces
 {
-    public interface ICar
+    public interface ICarService
     {
-        public List<CarDto>? GetAll();
+        public List<CarDto>? GetAll(); /// поправить
     }
 }

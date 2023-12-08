@@ -9,17 +9,21 @@ public partial class Car
 
     public string Name { get; set; } = null!;
 
-    public int? CategoryCarId { get; set; }
+    public int? CarCategoryId { get; set; }
+
+    public virtual ICollection<CarBadMatchup> CarBadMatchupBads { get; set; } = new List<CarBadMatchup>();
+
+    public virtual ICollection<CarBadMatchup> CarBadMatchupCars { get; set; } = new List<CarBadMatchup>();
+
+    public virtual CarCategory? CarCategory { get; set; }
 
     public virtual ICollection<CarEngine> CarEngines { get; set; } = new List<CarEngine>();
+
+    public virtual ICollection<CarGoodMatchup> CarGoodMatchupCars { get; set; } = new List<CarGoodMatchup>();
+
+    public virtual ICollection<CarGoodMatchup> CarGoodMatchupGoods { get; set; } = new List<CarGoodMatchup>();
 
     public virtual ICollection<CarStrongPoint> CarStrongPoints { get; set; } = new List<CarStrongPoint>();
 
     public virtual ICollection<CarWeakPoint> CarWeakPoints { get; set; } = new List<CarWeakPoint>();
-
-    public virtual CategoryCar? CategoryCar { get; set; }
-
-    public virtual ICollection<MatchupCar> MatchupCarBads { get; set; } = new List<MatchupCar>();
-
-    public virtual ICollection<MatchupCar> MatchupCarGoods { get; set; } = new List<MatchupCar>();
 }

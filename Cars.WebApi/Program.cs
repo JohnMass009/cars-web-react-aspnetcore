@@ -1,7 +1,8 @@
 using Cars.CarsDb.Context;
-using Cars.Infrastructure.Interfaces;
+using Cars.Domain.Interfaces;
 using Cars.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CarsDbContext>(options => options.UseSqlServer("Data Source=(localdb)\\mssqllocaldb;Database=CarsDb;Trusted_Connection=True;"));
 
-builder.Services.AddTransient<ICar, CarService>();
+builder.Services.AddTransient<ICarService, CarService>();
+builder.Services.AddTransient<ICarCategoryService, CarCategoryService>();
 
 var app = builder.Build();
 

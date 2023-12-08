@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Cars.Domain.Models
 {
-    internal class EngineDto
+    public class EngineDto
     {
+        public Guid Id { get; set; }
+
+        public int? EngineCategoryId { get; set; }
+
+        public int? EngineVolumeId { get; set; }
+
     }
 }

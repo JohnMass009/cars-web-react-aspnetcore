@@ -12,6 +12,6 @@ namespace Cars.Domain.Models
 
         public string Name { get; set; } = null!;
 
-        public int? CategoryCarId { get; set; }
+        public CarCategoryDto? CarCategory { get; set; }
     }
 }

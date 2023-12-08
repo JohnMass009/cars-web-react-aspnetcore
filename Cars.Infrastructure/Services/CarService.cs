@@ -1,16 +1,13 @@
 ﻿using Cars.CarsDb.Context;
 using Cars.CarsDb.Models;
 using Cars.Domain.Models;
-using Cars.Infrastructure.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Cars.Domain.Interfaces;
+using Cars.Infrastructure.Mappings;
+
 
 namespace Cars.Infrastructure.Services
 {
-    public class CarService : ICar
+    public class CarService : ICarService
     {
         CarsDbContext db;
 
@@ -18,6 +15,7 @@ namespace Cars.Infrastructure.Services
         {
             this.db = db;
         }
+
         public List<CarDto>? GetAll()
         {
             List<Car>? carsList = db.Cars.ToList();
@@ -25,23 +23,13 @@ namespace Cars.Infrastructure.Services
                 return null;
 
             List<CarDto> carsListDto = new List<CarDto>();
+
             foreach (Car car in carsList)
             {
-                CarDto carDto = ConvertToUserDto(car);
+                CarDto carDto = car.ToCarDto();
                 carsListDto.Add(carDto);
             }
             return carsListDto;
-        }
-
-        private CarDto ConvertToUserDto(Car car)
-        {
-            CarDto carDto = new CarDto()
-            {
-                Id = car.Id,
-                Name = car.Name,
-                CategoryCarId = car.CategoryCarId,
-            };
-            return carDto;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Cars.Infrastructure.Interfaces;
+﻿using Cars.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -8,16 +8,16 @@ namespace Cars.WebApi.Controllers
     [Route("[controller]")]
     public class CarController : Controller
     {
-        ICar iCar;
-        public CarController(ILogger<CarController> logger, ICar iCar) 
+        readonly ICarService _carService;
+        public CarController(ILogger<CarController> logger, ICarService carService)
         {
-            this.iCar = iCar;
+            _carService = carService;
         }
 
         [HttpGet()]
         public ActionResult Get()
         {
-            return Ok(iCar.GetAll());
+            return Ok(_carService.GetAll());
         }
     }
 }

@@ -7,15 +7,13 @@ public partial class Engine
 {
     public Guid Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public int? EngineCategoryId { get; set; }
 
-    public int? CategoryEngineId { get; set; }
-
-    public int? VolumeEngineId { get; set; }
+    public int? EngineVolumeId { get; set; }
 
     public virtual ICollection<CarEngine> CarEngines { get; set; } = new List<CarEngine>();
 
-    public virtual CategoryEngine? CategoryEngine { get; set; }
+    public virtual EngineCategory? EngineCategory { get; set; }
 
-    public virtual VolumeEngine? VolumeEngine { get; set; }
+    public virtual EngineVolume? EngineVolume { get; set; }
 }

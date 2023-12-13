@@ -16,11 +16,11 @@ namespace Cars.Infrastructure.Services
             this.db = db;
         }
 
-        public List<CarDto>? GetAll()
+        public List<CarDto> GetAll()
         {
             List<Car>? carsList = db.Cars.ToList();
             if (carsList == null)
-                return null;
+                return new List<CarDto>();
 
             List<CarDto> carsListDto = new List<CarDto>();
 

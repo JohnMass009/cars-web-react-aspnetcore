@@ -9,6 +9,6 @@ namespace Cars.Domain.Interfaces
 {
     public interface ICarService
     {
-        public List<CarDto>? GetAll(); /// поправить
+        public List<CarDto> GetAll();
     }
 }

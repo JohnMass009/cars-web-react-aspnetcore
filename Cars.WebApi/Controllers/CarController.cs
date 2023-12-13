@@ -1,4 +1,5 @@
 ﻿using Cars.Domain.Interfaces;
+using Cars.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -8,7 +9,7 @@ namespace Cars.WebApi.Controllers
     [Route("[controller]")]
     public class CarController : Controller
     {
-        readonly ICarService _carService;
+        private readonly ICarService _carService;
         public CarController(ILogger<CarController> logger, ICarService carService)
         {
             _carService = carService;
@@ -17,7 +18,11 @@ namespace Cars.WebApi.Controllers
         [HttpGet()]
         public ActionResult Get()
         {
-            return Ok(_carService.GetAll());
+            List<CarDto> carDtos = _carService.GetAll();
+            if(!carDtos.Any())
+                return BadRequest("Автомобили не найдены");
+
+            return Ok(carDtos);
         }
     }
 }

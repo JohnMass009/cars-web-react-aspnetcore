@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cars.Domain.Models
 {
-    internal class CarStrongPointDto
+    public class CarStrongPointDto
     {
+        
     }
 }

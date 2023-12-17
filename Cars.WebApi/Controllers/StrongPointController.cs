@@ -13,7 +13,7 @@ namespace Cars.WebApi.Controllers
     {
         private readonly IStrongPointService _strongPointService;
 
-        public StrongPointController(ILogger<CarController> logger, IStrongPointService strongPointService)
+        public StrongPointController(ILogger<StrongPointController> logger, IStrongPointService strongPointService)
         {
             _strongPointService = strongPointService;
         }
@@ -22,8 +22,8 @@ namespace Cars.WebApi.Controllers
         public ActionResult Get()
         {
             List<StrongPointDto> strongPoints = _strongPointService.GetAll();
-            if (!strongPoints.Any()) /// Any не работает с null
-                return BadRequest("Сильные стороны авто не найдены");
+            if (!strongPoints.Any()) /// Any не работает с null. Здесь ставим Any т.к. у нас возвращается не null, а в теории пустой список
+                return BadRequest("Список сильных сторон не найден");
 
             return Ok(strongPoints);
         }

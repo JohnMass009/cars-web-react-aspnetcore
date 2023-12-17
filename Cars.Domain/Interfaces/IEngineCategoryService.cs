@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Cars.Domain.Interfaces
 {
-    public interface IStrongPointService
+    public interface IEngineCategoryService
     {
-        public List<StrongPointDto> GetAll();
+        public List<EngineCategoryDto> GetAll();
 
-        public StrongPointDto? GetById(int id);
+        public EngineCategoryDto? GetById(int id);
     }
 }

@@ -23,7 +23,7 @@ namespace Cars.Infrastructure.Services
         public List<WeakPointDto> GetAll()
         {
             List<WeakPoint> weakPoints = db.WeakPoints.ToList();
-            if (!weakPoints.Any())
+            if (weakPoints == null)
                 return new List<WeakPointDto>();
 
             return weakPoints.ToWeakPointDtos();

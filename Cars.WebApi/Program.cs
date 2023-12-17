@@ -18,6 +18,11 @@ builder.Services.AddDbContext<CarsDbContext>(options => options.UseSqlServer("Da
 builder.Services.AddTransient<ICarService, CarService>();
 builder.Services.AddTransient<ICarCategoryService, CarCategoryService>();
 builder.Services.AddTransient<IStrongPointService, StrongPointService>();
+builder.Services.AddTransient<IWeakPointService, WeakPointService>();
+builder.Services.AddTransient<IEngineCategoryService, EngineCategoryService>();
+builder.Services.AddTransient<IEngineVolumeService, EngineVolumeService>();
+builder.Services.AddTransient<ICarStrongPointService, CarStrongPointService>();
+
 
 var app = builder.Build();
 

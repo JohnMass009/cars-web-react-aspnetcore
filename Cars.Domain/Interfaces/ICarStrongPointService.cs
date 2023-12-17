@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Cars.Domain.Interfaces
 {
-    public interface IStrongPointService
+    public interface ICarStrongPointService
     {
-        public List<StrongPointDto> GetAll();
-
-        public StrongPointDto? GetById(int id);
+        public List<StrongPointDto> GetAllByCarId(Guid carId);
     }
 }

@@ -8,6 +8,10 @@ namespace Cars.Domain.Models
 {
     public class CarStrongPointDto
     {
-        
+        public int Id { get; set; }
+
+        public CarDto? Car { get; set; }
+
+        public StrongPointDto? StrongPoint { get; set; }
     }
 }

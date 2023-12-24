@@ -11,7 +11,7 @@ namespace Cars.WebApi.Controllers
     {
         private readonly ICarCategoryService _carCategoryService;
 
-        public CarCategoryController(ILogger<CarController> logger, ICarCategoryService carCategoryService) 
+        public CarCategoryController(ILogger<CarCategoryController> logger, ICarCategoryService carCategoryService) 
         {
             _carCategoryService = carCategoryService;
         }

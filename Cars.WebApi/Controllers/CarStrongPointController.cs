@@ -2,6 +2,7 @@
 using Cars.Domain.Interfaces;
 using Cars.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace Cars.WebApi.Controllers
 {
@@ -16,20 +17,44 @@ namespace Cars.WebApi.Controllers
             _carStrongPointService = carStrongPointService;
         }
 
-        [HttpGet("{iddd}")]
-        public ActionResult Get(Guid id)
+        [HttpGet("CarAllStrongPoints/{carId}")] /// название в атрибуте и во входной переменной get должны быть одинаковы, чтобы не писать дважды и чтобы значение с атрибута перешло в параметр метода
+        public ActionResult Get(Guid carId)
         {
-            List<StrongPointDto> strongPointDtos = _carStrongPointService.GetAllByCarId(id);
+            List<StrongPointDto> strongPointDtos = _carStrongPointService.GetAllStrongPointsByCarId(carId);
             if (!strongPointDtos.Any())
                 return BadRequest($"Сильные стороны авто не найдены");
 
             return Ok(strongPointDtos);
         }
 
-        //[HttpPost]
-        //public ActionResult Create([FromBody] CarStrongPointDto carStrongPointDto)
-        //{
-            
-        //}
+        [HttpGet("CarStrongPoint/{id}")]
+        public ActionResult Get(int id)
+        {
+            CarStrongPointReadDto? carStrongPointReadDto = _carStrongPointService.GetCarStrongPointDtoById(id);
+            if (carStrongPointReadDto == null)
+                return BadRequest("Запись не найдена");
+
+            return Ok(carStrongPointReadDto);
+        }
+
+        [HttpPost]
+        public ActionResult Create([FromBody] CarStrongPointWriteDto carStrongPointDto)
+        {
+            if (carStrongPointDto == null)
+                return BadRequest("У машины не найдены сильные стороны");
+
+            return Ok(_carStrongPointService.CreateCarStrongPointById(carStrongPointDto));
+            //return Ok("Запись успешно добавлена");
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            //if (_carStrongPointService.EntryExist(id)) // По хорошему сделать проверку на существующий id записи в БД
+            //    return BadRequest("Введен неверный Id записи");
+
+            _carStrongPointService?.DeleteCarStrongPointById(id);
+            return Ok("Запись успешно удалена");
+        }
     }
 }

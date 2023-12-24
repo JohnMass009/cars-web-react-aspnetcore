@@ -10,7 +10,7 @@ namespace Cars.WebApi.Controllers
     {
         private readonly IWeakPointService _weakPointService;
 
-        public WeakPointController(ILogger<CarController> logger, IWeakPointService weakPointService)
+        public WeakPointController(ILogger<WeakPointController> logger, IWeakPointService weakPointService)
         {
             _weakPointService = weakPointService;
         }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cars.Domain.Models
 {
-    internal class CarWeakPointDto
+    public class CarWeakPointWriteDto
     {
+        public Guid CarId { get; set; }
+
+        public int WeakPointId { get; set; }
     }
 }

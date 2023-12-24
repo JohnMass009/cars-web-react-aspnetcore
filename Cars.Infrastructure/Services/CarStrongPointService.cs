@@ -21,22 +21,67 @@ namespace Cars.Infrastructure.Services
             this.db = db;
         }
 
-        public List<StrongPointDto> GetAllByCarId(Guid carId)
+        private CarStrongPoint? GetCarStrongPointEntryById(int id)
         {
-            List<StrongPoint> strongPoints = db.CarStrongPoints.Where(s => s.CarId == carId).Include(s => s.Car).Include(c => c.StrongPoint).Select(s => s.StrongPoint).ToList()!; /// QUE: warning! null reference
-            if(!strongPoints.Any())
+            CarStrongPoint? carStrongPoint = db.CarStrongPoints.
+                Where(c => c.Id == id).
+                Include(c => c.Car).
+                Include(c => c.StrongPoint).
+                FirstOrDefault();
+
+            if (carStrongPoint == null)
+                return null;
+
+            return carStrongPoint;
+        }
+
+        public List<StrongPointDto> GetAllStrongPointsByCarId(Guid carId)
+        {
+            List<StrongPoint>? strongPoints = db.CarStrongPoints.
+                Where(s => s.CarId == carId && s.StrongPointId != null). // этим выражением успокаиваем логику
+                Include(s => s.Car!). /// QUE: снова watning был ниже, решил исправить знаком !
+                ThenInclude(c => c.CarCategory).
+                Include(s => s.StrongPoint).
+                Select(s => s.StrongPoint!). // знаком ! успокаиваем Visual Studio
+                ToList(); /// QUE: warning! null reference
+
+            if(strongPoints == null)
                 return new List<StrongPointDto>();
 
             return strongPoints.ToStrongPointDtos();
         }
         
-        //public static void EditCarStrongPoint(IStrongPointService _strongPointService, StrongPointDto strongPointDto)
-        //{
-        //    List<StrongPointDto> strongPointDtos = _strongPointService.GetAll();
-        //    if(!strongPointDtos.Any())
-        //        return;
+        /// написать метод GetCarStrongPointByCarId по новой созданной записи CarStrongPoint
+        public CarStrongPointReadDto? GetCarStrongPointDtoById(int id)
+        {
+            var carStrongPoint = GetCarStrongPointEntryById(id);
+            if (carStrongPoint == null)
+                return null;
 
-            
-        //}
+            return carStrongPoint.ToCarStrongPointDto();
+        }
+
+        public int CreateCarStrongPointById(CarStrongPointWriteDto carStrongPointDto) /// вернуть id новой записи вместо CarStrongPointDto
+        {
+            CarStrongPoint carStrongPoint = new CarStrongPoint()
+            { 
+                CarId = carStrongPointDto.CarId,
+                StrongPointId = carStrongPointDto.StrongPointId,
+            };
+            db.CarStrongPoints.Add(carStrongPoint);
+            db.SaveChanges();
+            return carStrongPoint.Id;
+        }
+
+        public int? DeleteCarStrongPointById(int id)
+        {
+            CarStrongPoint? deletedEntry = GetCarStrongPointEntryById(id);
+            if (deletedEntry == null)
+                return null;
+
+            db.CarStrongPoints.Remove(deletedEntry);
+            db.SaveChanges();
+            return deletedEntry.Id;
+        }
     }
 }

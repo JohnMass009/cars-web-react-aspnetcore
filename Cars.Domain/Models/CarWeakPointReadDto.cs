@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Cars.Domain.Models
 {
-    public class CarStrongPointDto
+    public class CarWeakPointReadDto
     {
         public int Id { get; set; }
 
-        public CarDto? Car { get; set; }
+        public CarDto? Car { get; set; } = null!; 
 
-        public StrongPointDto? StrongPoint { get; set; }
+        public WeakPointDto? WeakPoint { get; set; } = null!;
     }
 }
+
+
